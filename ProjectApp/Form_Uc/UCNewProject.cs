@@ -73,8 +73,9 @@ namespace ProjectApp.Form_Uc
                     {
                         Status1 = "Nyitott",
                         Status2 = "Új",
+                        DeadLine = DateTime.Now,
                         Creation_date = DateTime.Now,
-                        Company = cRepos.GetCompanyById(int.Parse(companyIdTbx.Text))
+                        CompanyId = cRepos.GetCompanyById(int.Parse(companyIdTbx.Text)).CompanyId
                     };
 
                     pService.AddProject(project);

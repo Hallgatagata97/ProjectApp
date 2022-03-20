@@ -152,7 +152,7 @@ namespace ProjectApp.Form_Uc
             this.unitPriceDataGridViewTextBoxColumn,
             this.deleteBtn,
             this.modifyBtn});
-            this.serviceDgv.DataSource = this.servicesBindingSource1;
+            this.serviceDgv.DataSource = this.servicesBindingSource2;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -442,7 +442,6 @@ namespace ProjectApp.Form_Uc
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown priceToNud;
-        private System.Windows.Forms.DataGridView serviceDgv;
         private System.Windows.Forms.Label noDataLbl;
         private MyDb_ProjectAppDataSet myDb_ProjectAppDataSet;
         private System.Windows.Forms.BindingSource projectsBindingSource;
@@ -459,5 +458,6 @@ namespace ProjectApp.Form_Uc
         private System.Windows.Forms.DataGridViewTextBoxColumn unitPriceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn deleteBtn;
         private System.Windows.Forms.DataGridViewButtonColumn modifyBtn;
+        private System.Windows.Forms.DataGridView serviceDgv;
     }
 }

@@ -39,7 +39,7 @@ namespace ProjectApp.Form_Uc
             }
         }
 
-        private void RefreshDgv()
+        public void RefreshDgv()
         {
             companyDgv.DataSource = repos.GetAllCompany();
         }
@@ -77,6 +77,28 @@ namespace ProjectApp.Form_Uc
         private void exportBtn_Click(object sender, EventArgs e)
         {
             export.toPdf(companyDgv, "Ügyfél lista", "Ügyfelek", new[] { 1.5f, 4f, 4f, 4f, 0f, 0f }, !context.Companies.Any());
+        }
+
+        private void companyDgv_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            CompanyModifyFrm frm = new CompanyModifyFrm();
+            frm.idLbl.Text = this.companyDgv.CurrentRow.Cells[0].Value.ToString();
+            frm.nameLbl.Text = this.companyDgv.CurrentRow.Cells[1].Value.ToString();
+            frm.phoneTbx.Text = this.companyDgv.CurrentRow.Cells[2].Value.ToString();
+            frm.emailAddressTbx.Text = this.companyDgv.CurrentRow.Cells[3].Value.ToString();
+            frm.taxLbl.Text = this.companyDgv.CurrentRow.Cells[4].Value.ToString();
+            
+            frm.ShowDialog();
+
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+        }
+
+        private void companyDgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

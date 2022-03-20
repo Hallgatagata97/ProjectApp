@@ -14,8 +14,6 @@ namespace ProjectApp.Models
     public class Company
     {
         [Key]
-
-        [ForeignKey("Project")]
         public int CompanyId { get; set; }
 
         public string Taxnumber { get; set; }

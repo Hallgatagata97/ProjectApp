@@ -22,5 +22,18 @@ namespace ProjectApp.Services
             context.Companies.Add(company);
             context.SaveChanges();
         }
+
+        public void UpdateCompany(int id, string address, string phone, string email)
+        {
+            using (context)
+            {
+                var company = context.Companies.Where(c => c.CompanyId == id).First();
+                company.Address = address;
+                company.PhoneNumber = phone;
+                company.Email = email;
+                context.SaveChanges();
+            }
+
+        }
     }
 }

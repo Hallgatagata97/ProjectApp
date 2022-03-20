@@ -18,16 +18,19 @@ namespace ProjectApp.Form_Uc
 {
     public partial class UCNewService : UserControl
     {
-        UCServices servicesUc;
+        UCServices _owner;
+      
         ServiceRepository repos;
         ProjectContext context;
         ServicesService sService;
         MessageBoxes ms;
-        public UCNewService()
+        public UCNewService(UCServices owner)
         {
+            _owner = owner;
+            
             InitializeComponent();
            
-            this.servicesUc = new UCServices();
+      
             this.context = new ProjectContext();
             this.repos = new ServiceRepository(context);
             this.sService = new ServicesService(context);
@@ -44,20 +47,41 @@ namespace ProjectApp.Form_Uc
             {
                 if (!string.IsNullOrWhiteSpace(serviceNameTbx.Text) && !string.IsNullOrWhiteSpace(serviceUnitCbx.Text) && !string.IsNullOrWhiteSpace((servicePriceNud.Text)))
                 {
+                    Service service = new Service()
+                    {
+                        Name = serviceNameTbx.Text,
+                        Unit = serviceUnitCbx.Text,
+                        UnitPrice = float.Parse(servicePriceNud.Text)
+                    };
                     using (context = new ProjectContext())
                     {
-                        Service service = new Service()
-                        {
-                            Name = serviceNameTbx.Text,
-                            Unit = serviceUnitCbx.Text,
-                            UnitPrice = float.Parse(servicePriceNud.Text)
-                        };
+                        
 
                         sService.AddService(service);
+                        context.SaveChanges();
+
+                        // _owner.services.Add(service);
+
+                        _owner.dgv.DataSource = repos.GetAllService();
+                        //_owner.dgv.DataSource = null;
+                        //repos.GetAllService();
 
                     };
-                   
-                   
+
+                    
+
+                   //_owner.serviceDgv.DataSource = repos.GetAllService();
+                    //_owner.dgv.DataSource = repos.GetAllService();
+                    // _owner.RefreshDgv();
+                   // _owner.dgv.Refresh();
+
+
+                    // _owner.RefreshDgv();
+                    //_owner.dgv.DataSource = //repos.GetAllService();
+
+
+
+
                     ((NewServiceFrm)this.TopLevelControl).Close();
                 }
                 else
@@ -66,11 +90,17 @@ namespace ProjectApp.Form_Uc
                    
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                ms.WarningMessage("Minden adat kitöltése kötelező!");
+                Console.WriteLine(ex);
+                ms.WarningMessage(ex.ToString());//"Minden adat kitöltése kötelező!");
             } 
            
+        }
+
+        private void modifyBtn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

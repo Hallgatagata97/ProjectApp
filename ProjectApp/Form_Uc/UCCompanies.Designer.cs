@@ -30,21 +30,14 @@ namespace ProjectApp.Form_Uc
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.exportBtn = new System.Windows.Forms.Button();
             this.companyNameTbx = new System.Windows.Forms.TextBox();
             this.noDataLbl = new System.Windows.Forms.Label();
             this.companyDgv = new System.Windows.Forms.DataGridView();
-            this.companyIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.companyNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.phoneNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.deleteBtn = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.modifyBtn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.companyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.myDb_ProjectAppDataSet = new ProjectApp.MyDb_ProjectAppDataSet();
             this.countLbl = new System.Windows.Forms.Label();
@@ -55,7 +48,11 @@ namespace ProjectApp.Form_Uc
             this.label1 = new System.Windows.Forms.Label();
             this.companyIdTbx = new System.Windows.Forms.TextBox();
             this.companyTableAdapter = new ProjectApp.MyDb_ProjectAppDataSetTableAdapters.CompanyTableAdapter();
-            this.exportBtn = new System.Windows.Forms.Button();
+            this.companyIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.companyNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.phoneNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Taxnumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.companyDgv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.companyBindingSource)).BeginInit();
@@ -82,6 +79,21 @@ namespace ProjectApp.Form_Uc
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(900, 500);
             this.panel1.TabIndex = 2;
+            // 
+            // exportBtn
+            // 
+            this.exportBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.exportBtn.FlatAppearance.BorderColor = System.Drawing.Color.DarkCyan;
+            this.exportBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.exportBtn.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.exportBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.exportBtn.Location = new System.Drawing.Point(565, 466);
+            this.exportBtn.Name = "exportBtn";
+            this.exportBtn.Size = new System.Drawing.Size(103, 30);
+            this.exportBtn.TabIndex = 23;
+            this.exportBtn.Text = "Export";
+            this.exportBtn.UseVisualStyleBackColor = false;
+            this.exportBtn.Click += new System.EventHandler(this.exportBtn_Click);
             // 
             // companyNameTbx
             // 
@@ -118,91 +130,35 @@ namespace ProjectApp.Form_Uc
             this.companyNameDataGridViewTextBoxColumn,
             this.phoneNumberDataGridViewTextBoxColumn,
             this.emailDataGridViewTextBoxColumn,
-            this.deleteBtn,
-            this.modifyBtn});
+            this.Taxnumber});
             this.companyDgv.DataSource = this.companyBindingSource;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Lavender;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.DarkSlateGray;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.companyDgv.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Lavender;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.DarkSlateGray;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.companyDgv.DefaultCellStyle = dataGridViewCellStyle1;
             this.companyDgv.Location = new System.Drawing.Point(13, 13);
             this.companyDgv.Name = "companyDgv";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.AliceBlue;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.DarkSlateGray;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Lavender;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.DarkSlateGray;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.companyDgv.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Lavender;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.DarkSlateGray;
-            this.companyDgv.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.AliceBlue;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.DarkSlateGray;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Lavender;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.DarkSlateGray;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.companyDgv.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Lavender;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.DarkSlateGray;
+            this.companyDgv.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.companyDgv.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.companyDgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.companyDgv.Size = new System.Drawing.Size(655, 450);
             this.companyDgv.TabIndex = 22;
-            // 
-            // companyIdDataGridViewTextBoxColumn
-            // 
-            this.companyIdDataGridViewTextBoxColumn.DataPropertyName = "CompanyId";
-            this.companyIdDataGridViewTextBoxColumn.FillWeight = 50F;
-            this.companyIdDataGridViewTextBoxColumn.HeaderText = "Ügyfél ID";
-            this.companyIdDataGridViewTextBoxColumn.Name = "companyIdDataGridViewTextBoxColumn";
-            this.companyIdDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // companyNameDataGridViewTextBoxColumn
-            // 
-            this.companyNameDataGridViewTextBoxColumn.DataPropertyName = "CompanyName";
-            this.companyNameDataGridViewTextBoxColumn.FillWeight = 150F;
-            this.companyNameDataGridViewTextBoxColumn.HeaderText = "Ügyfél neve";
-            this.companyNameDataGridViewTextBoxColumn.Name = "companyNameDataGridViewTextBoxColumn";
-            // 
-            // phoneNumberDataGridViewTextBoxColumn
-            // 
-            this.phoneNumberDataGridViewTextBoxColumn.DataPropertyName = "PhoneNumber";
-            this.phoneNumberDataGridViewTextBoxColumn.HeaderText = "Telefonszám";
-            this.phoneNumberDataGridViewTextBoxColumn.Name = "phoneNumberDataGridViewTextBoxColumn";
-            // 
-            // emailDataGridViewTextBoxColumn
-            // 
-            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
-            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
-            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
-            // 
-            // deleteBtn
-            // 
-            this.deleteBtn.DataPropertyName = "ServiceId";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.AliceBlue;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.AliceBlue;
-            this.deleteBtn.DefaultCellStyle = dataGridViewCellStyle1;
-            this.deleteBtn.FillWeight = 30F;
-            this.deleteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.deleteBtn.HeaderText = "Törlés";
-            this.deleteBtn.Name = "deleteBtn";
-            this.deleteBtn.ReadOnly = true;
-            this.deleteBtn.Text = "";
-            this.deleteBtn.UseColumnTextForButtonValue = true;
-            // 
-            // modifyBtn
-            // 
-            this.modifyBtn.DataPropertyName = "ServiceId";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.GhostWhite;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.GhostWhite;
-            this.modifyBtn.DefaultCellStyle = dataGridViewCellStyle2;
-            this.modifyBtn.FillWeight = 30F;
-            this.modifyBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.modifyBtn.HeaderText = "Mód.";
-            this.modifyBtn.Name = "modifyBtn";
-            this.modifyBtn.ReadOnly = true;
-            this.modifyBtn.Text = "";
-            this.modifyBtn.UseColumnTextForButtonValue = true;
+            this.companyDgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.companyDgv_CellContentClick);
+            this.companyDgv.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.companyDgv_CellContentDoubleClick);
             // 
             // companyBindingSource
             // 
@@ -303,20 +259,42 @@ namespace ProjectApp.Form_Uc
             // 
             this.companyTableAdapter.ClearBeforeFill = true;
             // 
-            // exportBtn
+            // companyIdDataGridViewTextBoxColumn
             // 
-            this.exportBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.exportBtn.FlatAppearance.BorderColor = System.Drawing.Color.DarkCyan;
-            this.exportBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.exportBtn.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.exportBtn.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.exportBtn.Location = new System.Drawing.Point(565, 466);
-            this.exportBtn.Name = "exportBtn";
-            this.exportBtn.Size = new System.Drawing.Size(103, 30);
-            this.exportBtn.TabIndex = 23;
-            this.exportBtn.Text = "Export";
-            this.exportBtn.UseVisualStyleBackColor = false;
-            this.exportBtn.Click += new System.EventHandler(this.exportBtn_Click);
+            this.companyIdDataGridViewTextBoxColumn.DataPropertyName = "CompanyId";
+            this.companyIdDataGridViewTextBoxColumn.FillWeight = 50F;
+            this.companyIdDataGridViewTextBoxColumn.HeaderText = "Ügyfél ID";
+            this.companyIdDataGridViewTextBoxColumn.Name = "companyIdDataGridViewTextBoxColumn";
+            this.companyIdDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // companyNameDataGridViewTextBoxColumn
+            // 
+            this.companyNameDataGridViewTextBoxColumn.DataPropertyName = "CompanyName";
+            this.companyNameDataGridViewTextBoxColumn.FillWeight = 150F;
+            this.companyNameDataGridViewTextBoxColumn.HeaderText = "Ügyfél neve";
+            this.companyNameDataGridViewTextBoxColumn.Name = "companyNameDataGridViewTextBoxColumn";
+            this.companyNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // phoneNumberDataGridViewTextBoxColumn
+            // 
+            this.phoneNumberDataGridViewTextBoxColumn.DataPropertyName = "PhoneNumber";
+            this.phoneNumberDataGridViewTextBoxColumn.HeaderText = "Telefonszám";
+            this.phoneNumberDataGridViewTextBoxColumn.Name = "phoneNumberDataGridViewTextBoxColumn";
+            this.phoneNumberDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // emailDataGridViewTextBoxColumn
+            // 
+            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
+            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
+            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            this.emailDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // Taxnumber
+            // 
+            this.Taxnumber.DataPropertyName = "Taxnumber";
+            this.Taxnumber.HeaderText = "Adószám";
+            this.Taxnumber.Name = "Taxnumber";
+            this.Taxnumber.ReadOnly = true;
             // 
             // UCCompanies
             // 
@@ -346,10 +324,6 @@ namespace ProjectApp.Form_Uc
         private System.Windows.Forms.TextBox companyIdTbx;
         private System.Windows.Forms.Label noDataLbl;
         private System.Windows.Forms.DataGridView companyDgv;
-        private System.Windows.Forms.DataGridViewTextBoxColumn companyIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn companyNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn phoneNumberDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn deleteBtn;
         private System.Windows.Forms.DataGridViewButtonColumn modifyBtn;
         private System.Windows.Forms.BindingSource companyBindingSource;
@@ -357,5 +331,10 @@ namespace ProjectApp.Form_Uc
         private MyDb_ProjectAppDataSetTableAdapters.CompanyTableAdapter companyTableAdapter;
         private System.Windows.Forms.TextBox companyNameTbx;
         private System.Windows.Forms.Button exportBtn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn companyIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn companyNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn phoneNumberDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Taxnumber;
     }
 }

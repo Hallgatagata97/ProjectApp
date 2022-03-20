@@ -83,6 +83,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\ProjectContext.cs" />
+    <Compile Include="Form_Uc\CompanyModifyFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Uc\CompanyModifyFrm.Designer.cs">
+      <DependentUpon>CompanyModifyFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_Uc\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -182,6 +188,9 @@
     <Compile Include="Services\ProjectServices.cs" />
     <Compile Include="Services\ServicesService.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <EmbeddedResource Include="Form_Uc\CompanyModifyFrm.resx">
+      <DependentUpon>CompanyModifyFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_Uc\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

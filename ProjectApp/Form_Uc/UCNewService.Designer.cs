@@ -92,6 +92,7 @@ namespace ProjectApp.Form_Uc
             this.modifyBtn.Size = new System.Drawing.Size(468, 50);
             this.modifyBtn.TabIndex = 17;
             this.modifyBtn.UseVisualStyleBackColor = false;
+            this.modifyBtn.Click += new System.EventHandler(this.modifyBtn_Click);
             // 
             // saveBtn
             // 

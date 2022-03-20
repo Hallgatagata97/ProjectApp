@@ -35,12 +35,14 @@ namespace ProjectApp.Form_Uc
             get { return backButton; }
             set { backButton = value; }
         }
+        public UCServices ucService;
         public NewServiceFrm()
         {
             InitializeComponent();
+            this.ucService = new UCServices();
             if(!PanelContainer.Controls.ContainsKey("UCNewService"))
             {
-                UCNewService uc = new UCNewService();
+                UCNewService uc = new UCNewService(ucService);
                 uc.Dock = DockStyle.Fill;
                 PanelContainer.Controls.Add(uc);
                 //PanelContainer.Controls.Add(uc);

@@ -1,6 +1,7 @@
 ﻿using iTextSharp.text;
 using iTextSharp.text.pdf;
 using ProjectApp.Context;
+using ProjectApp.Models;
 using ProjectApp.OtherServices;
 using ProjectApp.Repositories;
 using System;
@@ -24,6 +25,8 @@ namespace ProjectApp.Form_Uc
         MessageBoxes ms;
         Exporting export;
         VisualServices vs;
+        //public List<Service> services;
+       // private BindingSource bs;
         public UCServices()
         {
             InitializeComponent();
@@ -32,6 +35,8 @@ namespace ProjectApp.Form_Uc
             this.ms = new MessageBoxes();
             this.export = new Exporting(context);
             this.vs = new VisualServices();
+            //this.services = repos.GetAllService();
+           // this.bs = new BindingSource(); 
             if (!context.Services.Any())
             {
                 noDataLbl.Visible = true;
@@ -39,7 +44,8 @@ namespace ProjectApp.Form_Uc
             else
             {
                 noDataLbl.Visible = false;
-                RefreshDgv();
+               RefreshDgv();
+                //serviceDgv.DataSource = bs;
                 vs.resultCountLblText(countLbl, serviceDgv);
             }
 
@@ -47,23 +53,20 @@ namespace ProjectApp.Form_Uc
 
        public void RefreshDgv()
         {
-            serviceDgv.DataSource = repos.GetAllService();
+            dgv.DataSource = repos.GetAllService(); 
+           //repos.DeleteFilters(serviceIdTbx, serviceNameTbx, priceFromNud, priceToNud, serviceDgv);
         }
 
         public DataGridView dgv
         {
             get { return serviceDgv; }
-            set { serviceDgv.DataSource = repos.GetAllService(); }
+            set { serviceDgv = value; }
         }
 
         private void newServiceBtn_Click(object sender, EventArgs e)
         {
             NewServiceFrm frm = new NewServiceFrm();
-            if (frm.ShowDialog() == DialogResult.OK)
-            {
-                //dgv.Rows.Add(frm.Service)
-                RefreshDgv();
-            }
+            frm.Show();
             NewServiceFrm.Instance.backBtn.Visible = true;
 
         }

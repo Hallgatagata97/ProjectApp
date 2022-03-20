@@ -30,8 +30,9 @@ namespace ProjectApp.Models
         public DateTime DeadLine { get; set; }
       
         public DateTime Creation_date { get; set; }
-       [Column("Companies_CompanyId")]
-       
+        public int CompanyId { get; set; }
+
+        
         public Company Company { get; set; }
         
         public ICollection<ProjectService> ProjectService { get; set; }
